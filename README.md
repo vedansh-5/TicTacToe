@@ -15,3 +15,6 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 To access the source code of the project follow this path "src/Components/TicTacToe"
+
+Hosted Link
+https://vedansh-5.github.io/TicTacToe/

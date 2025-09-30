@@ -12,3 +12,5 @@
 
  ([#7](https://github.com/vedansh-5/TicTacToe/pull/7)) by [@vedansh-5](https://github.com/vedansh-5) on 2025-09-30 09:53:07 UTC
 
+- Shoud work now changes in wokrflow ([#8](https://github.com/vedansh-5/TicTacToe/pull/8)) by [@vedansh-5](https://github.com/vedansh-5) on 2025-09-30 09:57:25 UTC
+

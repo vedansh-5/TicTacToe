@@ -33,19 +33,9 @@ jobs:
 
           echo "category=$CATEGORY" >> $GITHUB_OUTPUT
 
-          # More robust extraction - look for content between Description and next ### heading
-          PR_BODY="${{ github.event.pull_request.body }}"
-          SUMMARY=""
-          
-          if [[ -n "$PR_BODY" ]]; then
-            # Extract everything between ### Description and next ### heading
-            SUMMARY=$(echo "$PR_BODY" | awk '/^###\s*[Dd]escription/,/^###/{if(!/^###/) print}' | grep -v '^\s*$' | head -n 2 | tr '\n' ' ' | sed 's/^[ \t]*//;s/[ \t]*$//')
-          fi
+          SUMMARY=$(echo "${{ github.event.pull_request.body }}" | sed -n '/^#\+\s*[Dd]escription/,/^#/p' | sed '1d;$d' | grep -v '^\s*$' | head -n 2 | tr '\n' ' ' | sed 's/^[ \t]*/- /;s/[ \t]*$//')
 
-          # Add dash prefix and fallback to title if empty
-          if [[ -n "$SUMMARY" ]]; then
-            SUMMARY="- $SUMMARY"
-          else
+          if [[ -z "$SUMMARY" ]] || [[ "$SUMMARY" == "- " ]] ; then
             SUMMARY="- ${{ github.event.pull_request.title }}"
           fi
 

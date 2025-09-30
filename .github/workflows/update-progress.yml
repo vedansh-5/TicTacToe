@@ -49,9 +49,7 @@ jobs:
             SUMMARY="- ${{ github.event.pull_request.title }}"
           fi
 
-          echo "summary<<EOF" >> $GITHUB_ENV
-          echo "$SUMMARY" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "summary=$SUMMARY" >> $GITHUB_OUTPUT
 
       - name: Update PROGRESS.md
         if: steps.pr_info.outputs.category == 'MAJOR' || steps.pr_info.outputs.category == 'MINOR'
@@ -66,7 +64,7 @@ jobs:
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           
           # The summary from the previous step already starts with '- '
-          echo "${{ env.SUMMARY }} ($PR_LINK) by $CONTRIBUTOR on $TIMESTAMP" >> PROGRESS.md
+          echo "${{ steps.pr_info.outputs.summary }} ($PR_LINK) by $CONTRIBUTOR on $TIMESTAMP" >> PROGRESS.md
           echo "" >> PROGRESS.md
 
           cat PROGRESS.md

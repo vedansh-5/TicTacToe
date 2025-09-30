@@ -39,7 +39,7 @@ jobs:
           
           if [[ -n "$PR_BODY" ]]; then
             # Extract everything between ### Description and next ### heading
-            SUMMARY=$(echo "$PR_BODY" | sed -n '/^###\s*[Dd]escription/,/^###/p' | sed '1d;$d' | sed '/<!--/,/-->/d' | grep -v '^\s*$' | head -n 2 | tr '\n' ' ' | sed 's/^[ \t]*//;s/[ \t]*$//')
+            SUMMARY=$(echo "$PR_BODY" | sed -n '/^###\s*[Dd]escription/,/^###/p' | sed '1d' | sed '/^###/d' | sed '/<!--/,/-->/d' | grep -v '^\s*$' | head -n 2 | tr '\n' ' ' | sed 's/^[ \t]*//;s/[ \t]*$//')
           fi
 
           # Add dash prefix and fallback to title if empty

@@ -8,3 +8,5 @@
 
  ([#5](https://github.com/vedansh-5/TicTacToe/pull/5)) by [@vedansh-5](https://github.com/vedansh-5) on 2025-09-30 09:32:01 UTC
 
+ ([#6](https://github.com/vedansh-5/TicTacToe/pull/6)) by [@vedansh-5](https://github.com/vedansh-5) on 2025-09-30 09:39:14 UTC
+
